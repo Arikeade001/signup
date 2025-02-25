@@ -31,7 +31,7 @@ app.use(express.json())
 
 const connectDB = async ()=> {
     try{
-       await mongoose .connect("mongodb://localhost:27017/empower") 
+       await mongoose .connect("mongodb://localhost:27017/laptop4dev") 
        console.log("mongoDB connected...");
     }catch (error){
         console.log ("error connecting to the database");
