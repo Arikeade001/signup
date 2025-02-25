@@ -118,24 +118,25 @@ app.post("/login", async (req, res) => {
  }
 })
 
-app.get("/allData", (req, res)=> {
-    User.find({}, (err, users)=>{
-        if(err){
-            return res.status(400).json({msg: "Error getting data"});
+app.get("/allData", (req, res) => {
+    app.get("/allData", async (req, res) => {
+        try {
+            const users = await User.find({});
+            res.json(users);
+        } catch (error) {
+            res.status(400).json({ msg: "Error getting data" });
         }
-        res.json(users);
-    })
+    });
 })
 
-app.get("/number-of-appplicats", (req, res)=> {
-    User.countDocuments({}, (err, count)=>{
-        if(err){
-            return res.status(400).json({msg: "Error getting data"});
+app.get("/number-of-appplicants", (req, res) => {
+    User.countDocuments({}, (err, count) => {
+        if (err) {
+            return res.status(400).json({ msg: "Error getting data" });
         }
-        res.json({count: count});
-    })
-})
-
+        res.json({ count: count });
+    });
+});
 app.get("/", (req, res)=> {
     res.send("Welcome to laptop4dev");
 
