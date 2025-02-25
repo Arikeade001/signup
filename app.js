@@ -82,8 +82,10 @@ app.post ("/signup", async (req, res)=>{
        const newuser = new User({
         firstName: firstName,
         lastName: lastName,
+        phoneNumber: phoneNumber,
         email: email,
         password: hashedpassword,
+        reason: reason
        })
        await newuser.save();
        return res.status(200).json({msg :"user created successfully please log in"})
